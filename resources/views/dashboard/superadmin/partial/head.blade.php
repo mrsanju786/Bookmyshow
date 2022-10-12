@@ -14,4 +14,11 @@
     <link rel="stylesheet" href="{{ asset('dashboard/assets/vendors/bootstrap-icons/bootstrap-icons.css') }}">
     <link rel="stylesheet" href="{{ asset('dashboard/assets/css/app.css') }}">
     <link rel="shortcut icon" href="{{ asset('dashboard/assets/images/favicon.svg') }}" type="image/x-icon">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{{ asset('dashboard/assets/vendors/simple-datatables/style.css') }}">
+
+    @stack('head')
+
+
+    
 </head>

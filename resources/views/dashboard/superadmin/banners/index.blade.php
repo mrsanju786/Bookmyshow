@@ -4,11 +4,11 @@
 
 
 <div class="pagetitle">
-    <h1>Categories</h1>
+    <h1>Banner</h1>
     <nav>
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-        <li class="breadcrumb-item">categories</li>
+        <li class="breadcrumb-item">Banner</li>
       </ol>
     </nav>
   </div><!-- End Page Title -->
@@ -33,33 +33,39 @@
 
         <div class="card">
           <div class="card-header">
-            Categories Listing
+            Cities Listing
               <button class="btn btn-primary btn-xs" style="float: right;">   
-                  <a href="{{ url('category/create') }}" class="text-white">Add Category</a>     
+                  <a href="{{ url('banner/create') }}" class="text-white">Add Banner</a>     
               </button>
           </div>
           <div class="card-body">
             <!-- Table with stripped rows -->
-            <table class="table table-striped" id="categorytbl">
+            <table class="table table-striped" id="bannertbl">
               <thead>
                 <tr>
                   <th scope="col">#</th>
-                  <th scope="col">Category Name</th>
+                  <th scope="col">Banner Name</th>
+                  <th scope="col">Banner Image</th>
+                  <th scope="col">Status</th>
                   <th scope="col">Action</th>
                 </tr>
               </thead>
               <tbody>
                   @php  $no = 1  @endphp
-                  @foreach ($categories as $category)
+                  @foreach ($banners as $banner)
                       
                   <tr>
                     <td>{{ $no++ }}</td>
-                    <td>{{ $category->name }}</td>
+                    <td>{{ $banner->name }}</td>
                     <td>
-                      <a href="{{ url('category/'.$category->id.'/edit') }}">
+                      <img src="{{ url('uploads/banner/'.$banner->image) }}" alt="" height="120" width="120">
+                    </td>
+                    <td> @if($banner->status == 1) active @else inactive  @endif</td>
+                    <td>
+                      <a href="{{ url('banner/'.$banner->id.'/edit') }}">
                         <i class="bi bi-pencil-square"></i>
                       </a>
-                      <a href="{{ url('category/'.$category->id .'/delete') }}" onclick="return   confirm('Are you sure want to delete this recoard!')">
+                      <a href="{{ url('banner/'.$banner->id .'/delete') }}" onclick="return   confirm('Are you sure want to delete this recoard!')">
                         <i class="bi bi-trash-fill"></i>
                       </a>
                     </td>
@@ -80,7 +86,7 @@
   @push('script')
   <script>
     // Simple Datatable
-    let table1 = document.querySelector('#categorytbl');
+    let table1 = document.querySelector('#bannertbl');
     let dataTable = new simpleDatatables.DataTable(table1);
   </script>
 @endpush

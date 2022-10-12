@@ -4,11 +4,11 @@
 
 
 <div class="pagetitle">
-    <h1>Categories</h1>
+    <h1>Cities</h1>
     <nav>
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-        <li class="breadcrumb-item">categories</li>
+        <li class="breadcrumb-item">cities</li>
       </ol>
     </nav>
   </div><!-- End Page Title -->
@@ -33,33 +33,37 @@
 
         <div class="card">
           <div class="card-header">
-            Categories Listing
+            Cities Listing
               <button class="btn btn-primary btn-xs" style="float: right;">   
-                  <a href="{{ url('category/create') }}" class="text-white">Add Category</a>     
+                  <a href="{{ url('city/create') }}" class="text-white">Add City</a>     
               </button>
           </div>
           <div class="card-body">
             <!-- Table with stripped rows -->
-            <table class="table table-striped" id="categorytbl">
+            <table class="table table-striped" id="citytbl">
               <thead>
                 <tr>
                   <th scope="col">#</th>
-                  <th scope="col">Category Name</th>
+                  <th scope="col">City Name</th>
+                  <th scope="col">City Image</th>
                   <th scope="col">Action</th>
                 </tr>
               </thead>
               <tbody>
                   @php  $no = 1  @endphp
-                  @foreach ($categories as $category)
+                  @foreach ($cities as $city)
                       
                   <tr>
                     <td>{{ $no++ }}</td>
-                    <td>{{ $category->name }}</td>
+                    <td>{{ $city->name }}</td>
                     <td>
-                      <a href="{{ url('category/'.$category->id.'/edit') }}">
+                      <img src="{{ url('uploads/city/'.$city->image) }}" alt="" height="120" width="120">
+                    </td>
+                    <td>
+                      <a href="{{ url('city/'.$city->id.'/edit') }}">
                         <i class="bi bi-pencil-square"></i>
                       </a>
-                      <a href="{{ url('category/'.$category->id .'/delete') }}" onclick="return   confirm('Are you sure want to delete this recoard!')">
+                      <a href="{{ url('city/'.$city->id .'/delete') }}" onclick="return   confirm('Are you sure want to delete this recoard!')">
                         <i class="bi bi-trash-fill"></i>
                       </a>
                     </td>
@@ -76,13 +80,12 @@
       </div>
     </div>
   </section>
-
+    
   @push('script')
   <script>
     // Simple Datatable
-    let table1 = document.querySelector('#categorytbl');
+    let table1 = document.querySelector('#citytbl');
     let dataTable = new simpleDatatables.DataTable(table1);
   </script>
 @endpush
-    
 @endsection

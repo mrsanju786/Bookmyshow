@@ -4,11 +4,11 @@
 
 
 <div class="pagetitle">
-    <h1>Categories</h1>
+    <h1>Sub Categories</h1>
     <nav>
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-        <li class="breadcrumb-item">categories</li>
+        <li class="breadcrumb-item">Sub Categories</li>
       </ol>
     </nav>
   </div><!-- End Page Title -->
@@ -33,33 +33,35 @@
 
         <div class="card">
           <div class="card-header">
-            Categories Listing
+            Sub Categories Listing
               <button class="btn btn-primary btn-xs" style="float: right;">   
-                  <a href="{{ url('category/create') }}" class="text-white">Add Category</a>     
+                  <a href="{{ url('subcategory/create') }}" class="text-white">Add Sub Category</a>     
               </button>
           </div>
           <div class="card-body">
             <!-- Table with stripped rows -->
-            <table class="table table-striped" id="categorytbl">
+            <table class="table table-striped" id="subcategorytbl">
               <thead>
                 <tr>
                   <th scope="col">#</th>
                   <th scope="col">Category Name</th>
+                  <th scope="col">Sub Category Name</th>
                   <th scope="col">Action</th>
                 </tr>
               </thead>
               <tbody>
                   @php  $no = 1  @endphp
-                  @foreach ($categories as $category)
+                  @foreach ($subcategories as $subcategory)
                       
                   <tr>
                     <td>{{ $no++ }}</td>
-                    <td>{{ $category->name }}</td>
+                    <td>{{ $subcategory->category_name }}</td>
+                    <td>{{ $subcategory->name }}</td>
                     <td>
-                      <a href="{{ url('category/'.$category->id.'/edit') }}">
+                      <a href="{{ url('subcategory/'.$subcategory->id.'/edit') }}">
                         <i class="bi bi-pencil-square"></i>
                       </a>
-                      <a href="{{ url('category/'.$category->id .'/delete') }}" onclick="return   confirm('Are you sure want to delete this recoard!')">
+                      <a href="{{ url('subcategory/'.$subcategory->id .'/delete') }}" onclick="return   confirm('Are you sure want to delete this recoard!')">
                         <i class="bi bi-trash-fill"></i>
                       </a>
                     </td>
@@ -76,13 +78,11 @@
       </div>
     </div>
   </section>
-
-  @push('script')
-  <script>
-    // Simple Datatable
-    let table1 = document.querySelector('#categorytbl');
-    let dataTable = new simpleDatatables.DataTable(table1);
-  </script>
-@endpush
-    
+    @push('script')
+      <script>
+        // Simple Datatable
+        let table1 = document.querySelector('#subcategorytbl');
+        let dataTable = new simpleDatatables.DataTable(table1);
+      </script>
+    @endpush
 @endsection
