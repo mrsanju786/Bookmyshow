@@ -15,288 +15,376 @@
     </ol>
   </nav>
 </div><!-- End Page Title -->
+<form class="form form-vertical" action="{{ route('event.store') }}" method="post" enctype="multipart/form-data">
+@csrf
 <section class="section">
-  <div class="row">
-    <div class="col-lg-6">
+  <div class="card">
+    <div class="card-body">
+        <div class="row">
+          <h5 class="card-title">Event Detail </h5><hr>
+          <br>
+          <div class="col-lg-6">
 
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title">Event Add Form </h5>
-          <!-- General Form Elements -->
-          <form class="form form-vertical" action="{{ route('event.store') }}" method="post" enctype="multipart/form-data">
-          @csrf
             <div class="row mb-3">
-              <label for="inputText" class="col-sm-2 col-form-label">Event Name</label>
-              <div class="col-sm-10">
-                <input type="text" id="event_name" 
-                  class="form-control" name="event_name"
-                  placeholder="Event Name">
+              <div class="col-sm-12">
+                <div class="form-group">
+                  
+                  <label for="inputText" class="col-sm-2 col-form-label">Category Name</label>
+                  <select name="category_id" id="" class="form-control">
+                    <option value="">-- Select Category --</option>
+                    @foreach ($categories as $category)
+                      <option value="{{ $category->id }}">{{ $category->name }}</option>
+                    @endforeach
+                  </select>
 
-                  @error('event_name')
-                      <span class="text-danger" role="alert">
-                          <strong>{{ $message }}</strong>
-                      </span>
-                  @enderror
-              </div>
-            </div>
-            <div class="row mb-3">
-              <label for="inputText" class="col-sm-2 col-form-label">Title</label>
-              <div class="col-sm-10">
-                <input type="text" id="title" 
-                  class="form-control" name="title"
-                  placeholder="Title">
+                    @error('category_id')
+                        <span class="text-danger" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
 
-                  @error('title')
-                      <span class="text-danger" role="alert">
-                          <strong>{{ $message }}</strong>
-                      </span>
-                  @enderror
+                </div>
               </div>
             </div>
 
             <div class="row mb-3">
-              <label for="inputText" class="col-sm-2 col-form-label">Event Image</label>
-              <div class="col-sm-10">
-                <input type="file" id="event_image" 
-                  class="form-control" name="event_image"
-                  placeholder="City Name">
+              <div class="col-sm-12">
+                <div class="form-group">
+                  <label for="inputText" class="col-sm-2 col-form-label">Event Name</label>
+                  <input type="text" id="event_name" 
+                    class="form-control" name="event_name"
+                    placeholder="Event Name">
 
-                  @error('event_image')
-                      <span class="text-danger" role="alert">
-                          <strong>{{ $message }}</strong>
-                      </span>
-                  @enderror
+                    @error('event_name')
+                        <span class="text-danger" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                </div>
+              </div>
+            </div>
+            <div class="row mb-3">
+              <div class="col-sm-12">
+                <div class="form-group">
+                  <label for="inputText" class="col-sm-2 col-form-label">Title</label>
+                  <input type="text" id="title" 
+                    class="form-control" name="title"
+                    placeholder="Title">
+
+                    @error('title')
+                        <span class="text-danger" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                </div>
               </div>
             </div>
 
             <div class="row mb-3">
-              <label for="inputText" class="col-sm-2 col-form-label">Address</label>
-              <div class="col-sm-10">
-                <input type="text" id="pac-input" class="form-control" name="address" placeholder="Address">
-                <input type="hidden" id="lat_address" class="form-control" name="lat_address"/>
-                <input type="hidden" id="long_address" class="form-control" name="long_address"/>
+              <div class="col-sm-12">
+                <div class="form-group">
+                  <label for="inputText" class="col-sm-2 col-form-label">Event Image</label>
+                  <input type="file" id="event_image" 
+                    class="form-control" name="event_image"
+                    placeholder="City Name">
 
-                  @error('address')
-                      <span class="text-danger" role="alert">
-                          <strong>{{ $message }}</strong>
-                      </span>
-                  @enderror
+                    @error('event_image')
+                        <span class="text-danger" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                </div>
               </div>
             </div>
+
             <div class="row mb-3">
-              <label for="inputText" class="col-sm-2 col-form-label">Street 1</label>
-              <div class="col-sm-10">
-                <input type="text" class="form-control" name="street1" placeholder="Street 1">
-                  @error('steet1')
-                      <span class="text-danger" role="alert">
-                          <strong>{{ $message }}</strong>
-                      </span>
-                  @enderror
+              <div class="col-sm-12">
+                <div class="form-group">
+                  
+                  <label for="inputText" class="col-sm-2 col-form-label">Address</label>
+                  <input type="text" id="pac-input" class="form-control" name="address" placeholder="Address">
+                  <input type="hidden" id="lat_address" class="form-control" name="lat_address"/>
+                  <input type="hidden" id="long_address" class="form-control" name="long_address"/>
+
+                    @error('address')
+                        <span class="text-danger" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+
+                </div>  
+              </div>
+            </div>
+
+            <div class="row mb-3">
+              <div class="col-sm-12">
+                <div class="form-group">
+                  <label for="inputText" class="col-sm-2 col-form-label">Street 1</label>
+                  <input type="text" class="form-control" name="street1" placeholder="Street 1">
+                    @error('steet1')
+                        <span class="text-danger" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                </div>
               </div>
             </div>
             
             <div class="row mb-3">
-              <label for="inputText" class="col-sm-2 col-form-label">Street 2</label>
-              <div class="col-sm-10">
-                <input type="text" class="form-control" name="street2" placeholder="Street 2">
-                  @error('street2')
-                      <span class="text-danger" role="alert">
-                        <strong>{{ $message }}</strong>
-                      </span>
-                      @enderror
-              </div>
-            </div>
-            
-            <div class="row mb-3">
-              <label for="inputText" class="col-sm-2 col-form-label">Languages</label>
-              <div class="col-sm-10">
-                <input type="text" class="form-control" name="languages" placeholder="Languages">
-                  @error('languages')
-                      <span class="text-danger" role="alert">
+              <div class="col-sm-12">
+                <div class="form-group">
+                  <label for="inputText" class="col-sm-2 col-form-label">Street 2</label>
+                  <input type="text" class="form-control" name="street2" placeholder="Street 2">
+                    @error('street2')
+                        <span class="text-danger" role="alert">
                           <strong>{{ $message }}</strong>
-                      </span>
-                  @enderror
+                        </span>
+                    @enderror
+                </div>
               </div>
             </div>
+          </div>
+          <div class="col-lg-6">
             
-
+            <div class="row mb-3">
+              <div class="col-sm-12">
+                <div class="form-group">
+                  <label for="inputText" class="col-sm-2 col-form-label">Languages</label>
+                  <input type="text" class="form-control" name="languages" placeholder="Languages">
+                    @error('languages')
+                        <span class="text-danger" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                </div>
+              </div>
+            </div>
 
             <div class="row mb-3">
-              <label for="inputText" class="col-sm-2 col-form-label">Event Create Date</label>
-
-              <div class="col-sm-10">
-                  <div id="inputFormRow">
-                      <div class="input-group mb-3">
-                          <input type="date" name="eventdate[]" class="form-control m-input" autocomplete="off">
-                          <input type="time" name="eventstarttime[]" class="form-control m-input" autocomplete="off">
-                          <input type="time" name="eventendtime[]" class="form-control m-input" autocomplete="off">
-                          <div class="input-group-append">
-                              <button id="removeRow" type="button" class="btn btn-danger">Remove</button>
-                          </div>
+              <div class="col-sm-12">
+                <div class="form-group">
+                  <label for="inputText" class="col-sm-2 col-form-label">Short Description</label>
+                  <div class="card">
+                      <div class="card-body">
+                        <textarea name="short_description"  class="form-control" id="editorShortDesc" cols="30" rows="10"></textarea>
                       </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row mb-3">
+              <div class="col-sm-12">
+                <div class="form-group">
+                  <label for="inputText" class="col-sm-2 col-form-label">Long Desciption</label>
+                  <div class="card">
+                      <div class="card-body">
+                          <textarea name="long_description"  class="form-control" id="editorLongDesc" rows="20" cols="50"></textarea>
+                      </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+<section class="section">
+  <div class="card">
+    <div class="card-body">
+      <div class="row">
+        <h5 class="card-title">Event Date </h5><hr>
+        <br>
+        <div class="col-lg-12">
+
+            {{-- <div class="row mb-3"> --}}
+              {{-- <label for="inputText" class="col-sm-2 col-form-label">Event Create Date</label> --}}
+
+              <div class="col-sm-12">
+                  <div id="inputFormRow">
+                    <div class="row">
+                        <div class="col-md-3">
+                          <div class="form-group">
+                              <label for="basicInput">Event date</label>
+                              <input type="date" name="eventdate[]" class="form-control m-input" autocomplete="off">
+                          </div>
+                        </div>
+                        <div class="col-md-3">
+                          <div class="form-group">
+                            <label for="basicInput">Start Time</label>
+                            <input type="time" name="eventstarttime[]" class="form-control m-input" autocomplete="off">
+                          </div>
+                        </div>
+                        <div class="col-md-3">
+                          <div class="form-group">
+                              <label for="basicInput">End Time</label>
+                              <input type="time" name="eventendtime[]" class="form-control m-input" autocomplete="off">
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                          <div class="input-group-append">
+                              <button id="removeRow" type="button" class="btn btn-danger mt-3">Remove</button>
+                          </div>
+                        </div>
+                    </div>
                   </div>
 
                   <div id="newRow"></div>
-                  <button id="addRow" type="button" class="btn btn-info">Add Row</button>
-              </div>
+                  <button id="addRow" type="button" class="btn btn-info">Add Event Date</button>
+              {{-- </div> --}}
             </div>
 
-            
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="card">
+    <div class="card-body">
+      <div class="row">
+        <h5 class="card-title">Ticket Date </h5><hr>
+        <br>
+        <div class="col-lg-6">
 
 
-
-
-
-{{-- 
-            <div class="row mb-3">
-              <label for="inputText" class="col-sm-2 col-form-label">Event Start Date</label>
-              <div class="col-sm-10 addEventDate">
-                <input type="date" class="form-control event_start_date" name="event_start_date" placeholder="Event start date">
-                <br/>
-                <input type="date" class="form-control event_end_date" name="event_end_date" placeholder="Event end date">
-                <br/>
-              </div> 
-              <div class="col-sm-10 addEventDate">
-                
-              </div>
-            </div> --}}
             
             <div class="row mb-3">
-              <label for="inputText" class="col-sm-2 col-form-label">Ticket Name</label>
-              <div class="col-sm-10">
-                <input type="text" class="form-control" name="ticket_name" placeholder="Ticket Name">
-                  @error('ticket_name')
-                      <span class="text-danger" role="alert">
-                          <strong>{{ $message }}</strong>
-                      </span>
-                  @enderror
+              <div class="col-sm-12">
+                <div class="form-group">
+                  <label for="inputText" class="col-sm-2 col-form-label">Ticket Name</label>
+                  <input type="text" class="form-control" name="ticket_name" placeholder="Ticket Name">
+                    @error('ticket_name')
+                        <span class="text-danger" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                </div>
               </div>
             </div>
             
             <div class="row mb-3">
-              <label for="inputText" class="col-sm-2 col-form-label">Ticket Type</label>
-              <div class="col-sm-10">
-                <input type="text" class="form-control" name="ticket_type" placeholder="Ticket Type">
-                  @error('ticket_type')
-                      <span class="text-danger" role="alert">
-                          <strong>{{ $message }}</strong>
-                      </span>
-                  @enderror
+              <div class="col-sm-12">
+                <div class="form-group">
+
+                  <label for="inputText" class="col-sm-2 col-form-label">Ticket Type</label>
+                  <input type="text" class="form-control" name="ticket_type" placeholder="Ticket Type">
+                    @error('ticket_type')
+                        <span class="text-danger" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                </div>
+              </div>
+            </div>
+
+        </div>
+        <div class="col-lg-6">
+
+            
+            <div class="row mb-3">
+              <div class="col-sm-12">
+                <div class="form-group">
+                  <label for="inputText" class="col-sm-2 col-form-label">Ticket Qty</label>
+                  <input type="text" class="form-control" name="ticket_qty" placeholder="Ticket Qty">
+                    @error('ticket_qty')
+                        <span class="text-danger" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                </div>
               </div>
             </div>
             
             <div class="row mb-3">
-              <label for="inputText" class="col-sm-2 col-form-label">Ticket Qty</label>
-              <div class="col-sm-10">
-                <input type="text" class="form-control" name="ticket_qty" placeholder="Ticket Qty">
-                  @error('ticket_qty')
-                      <span class="text-danger" role="alert">
-                          <strong>{{ $message }}</strong>
-                      </span>
-                  @enderror
+              <div class="col-sm-12">
+                <div class="form-group">
+
+                  <label for="inputText" class="col-sm-2 col-form-label">Ticket Price</label>
+                  <input type="text" class="form-control" name="ticket_price" placeholder="Ticket Price">
+                    @error('ticket_price')
+                        <span class="text-danger" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                </div>
               </div>
             </div>
-            
-            <div class="row mb-3">
-              <label for="inputText" class="col-sm-2 col-form-label">Ticket Price</label>
-              <div class="col-sm-10">
-                <input type="text" class="form-control" name="ticket_price" placeholder="Ticket Price">
-                  @error('ticket_price')
-                      <span class="text-danger" role="alert">
-                          <strong>{{ $message }}</strong>
-                      </span>
-                  @enderror
-              </div>
-            </div>
-
+        </div><br>
+        <div class="col-lg-12">
 
             <div class="row mb-3">
-              <label for="inputText" class="col-sm-2 col-form-label">Ticket Sale Date</label>
+              {{-- <label for="inputText" class="col-sm-2 col-form-label">Ticket Sale Date</label> --}}
 
-              <div class="col-sm-10">
+              <div class="col-sm-12">
                   <div id="inputFormRowTicket">
-                      <div class="input-group mb-3">
+                      {{-- <div class="input-group mb-3">
                           <input type="date" name="ticketdate[]" class="form-control m-input" autocomplete="off">
                           <input type="time" name="ticketstarttime[]" class="form-control m-input" autocomplete="off">
                           <input type="time" name="ticketendtime[]" class="form-control m-input" autocomplete="off">
                           <div class="input-group-append">
                               <button id="removeRowTicket" type="button" class="btn btn-danger">Remove</button>
                           </div>
-                      </div>
+                      </div> --}}
+
+                      <div class="row">
+                        <div class="col-md-3">
+                          <div class="form-group">
+                              <label for="basicInput">Ticket Sale Date</label>
+                              <input type="date" name="ticketdate[]" class="form-control m-input" autocomplete="off">
+                          </div>
+                        </div>
+                        <div class="col-md-3">
+                          <div class="form-group">
+                            <label for="basicInput">Start Time</label>
+                            <input type="time" name="ticketstarttime[]" class="form-control m-input" autocomplete="off">
+                          </div>
+                        </div>
+                        <div class="col-md-3">
+                          <div class="form-group">
+                              <label for="basicInput">End Time</label>
+                              <input type="time" name="ticketendtime[]" class="form-control m-input" autocomplete="off">
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                          <div class="input-group-append">
+                              <button id="removeRowTicket" type="button" class="btn btn-danger mt-3">Remove</button>
+                          </div>
+                        </div>
+                    </div>
+
+
                   </div>
 
                   <div id="newRowTicket"></div>
-                  <button id="addRowTicket" type="button" class="btn btn-info">Add Row</button>
+                  <button id="addRowTicket" type="button" class="btn btn-info">Add Ticket</button>
               </div>
             </div>
-
-
-
-            <div class="row mb-3">
-              <label for="inputText" class="col-sm-2 col-form-label">Category Name</label>
-              <div class="col-sm-10">
-                <select name="category_id" id="" class="form-control">
-                  <option value="">-- Select Category --</option>
-                  @foreach ($categories as $category)
-                    <option value="{{ $category->id }}">{{ $category->name }}</option>
-                  @endforeach
-                </select>
-
-                  @error('category_id')
-                      <span class="text-danger" role="alert">
-                          <strong>{{ $message }}</strong>
-                      </span>
-                  @enderror
-              </div>
-            </div>
-
-            <div class="row mb-3">
-              <label for="inputText" class="col-sm-2 col-form-label">Short Description</label>
-              <div class="col-10">
-                <div class="card">
-                    <div class="card-body">
-                      <textarea name="short_description" id="editorShortDesc" cols="30" rows="10"></textarea>
-
-                        {{-- <div id="editorShortDesc">
-                            <p>This is some sample content.</p>
-                        </div> --}}
-                    </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="row mb-3">
-              <label for="inputText" class="col-sm-2 col-form-label">Long Desciption</label>
-              <div class="col-10">
-                <div class="card">
-                    <div class="card-body">
-                        <textarea name="long_description" id="editorLongDesc" cols="30" rows="10"></textarea>
-                        {{-- <div id="editorLongDesc">
-                            <p>This is some sample content.</p>
-                        </div> --}}
-                    </div>
-                </div>
-              </div>
-            </div>
-
             
 
             <div class="row mb-3">
-              <div class="col-sm-10">
+              <div class="col-sm-12">
                 <button type="submit" class="btn btn-primary">Submit</button>
               </div>
             </div>
 
-          </form>
-          <!-- End General Form Elements -->
-          
+            <!-- End General Form Elements -->
+            
+          </div>
         </div>
+        
       </div>
-
     </div>
-  </div>
-</section>
-
+  </section>
+  
+</form>
 
 @push('script')
 
@@ -305,12 +393,39 @@
   $("#addRow").click(function () {
       var html = '';
       html += '<div id="inputFormRow">';
-      html += '<div class="input-group mb-3">';
+      // html += '<div class="input-group mb-3">';
+      // html += '<input type="date" name="eventdate[]" class="form-control m-input" autocomplete="off">';
+      // html += '<input type="time" name="eventstarttime[]" class="form-control m-input" autocomplete="off">';
+      // html += '<input type="time" name="eventendtime[]" class="form-control m-input" autocomplete="off">';
+      // html += '<div class="input-group-append">';
+      // html += '<button id="removeRow" type="button" class="btn btn-danger">Remove</button>';
+      // html += '</div>';
+
+      html += '<div class="row">';
+      html += '<div class="col-md-3">';
+      html += '<div class="form-group">';
+      html += '<label for="basicInput">Event Date</label>';
       html += '<input type="date" name="eventdate[]" class="form-control m-input" autocomplete="off">';
+      html += '</div>';
+      html += '</div>';
+      html += '<div class="col-md-3">';
+      html += '<div class="form-group">';
+      html += '<label for="basicInput">Start Time</label>';
       html += '<input type="time" name="eventstarttime[]" class="form-control m-input" autocomplete="off">';
+      html += '</div>';
+      html += '</div>';
+      html += '<div class="col-md-3">';
+      html += '<div class="form-group">';
+      html += '<label for="basicInput">End Time</label>';
       html += '<input type="time" name="eventendtime[]" class="form-control m-input" autocomplete="off">';
+      html += '</div>';
+      html += '</div>';
+      html += '<div class="col-md-3">';
       html += '<div class="input-group-append">';
-      html += '<button id="removeRow" type="button" class="btn btn-danger">Remove</button>';
+      html += '<button id="removeRow" type="button" class="btn btn-danger mt-3">Remove</button>';
+      html += '</div>';
+      html += '</div>';
+      html += '</div>';
       html += '</div>';
       html += '</div>';
 
@@ -327,12 +442,39 @@
   $("#addRowTicket").click(function () {
       var html = '';
       html += '<div id="inputFormRowTicket">';
-      html += '<div class="input-group mb-3">';
+      // html += '<div class="input-group mb-3">';
+      // html += '<input type="date" name="ticketdate[]" class="form-control m-input" autocomplete="off">';
+      // html += '<input type="time" name="ticketstarttime[]" class="form-control m-input" autocomplete="off">';
+      // html += '<input type="time" name="ticketendtime[]" class="form-control m-input" autocomplete="off">';
+      // html += '<div class="input-group-append">';
+      // html += '<button id="removeRowTicket" type="button" class="btn btn-danger">Remove</button>';
+      // html += '</div>';
+      // html += '</div>';
+      html += '<div class="row">';
+      html += '<div class="col-md-3">';
+      html += '<div class="form-group">';
+      html += '<label for="basicInput">Ticket Sale Date</label>';
       html += '<input type="date" name="ticketdate[]" class="form-control m-input" autocomplete="off">';
+      html += '</div>';
+      html += '</div>';
+      html += '<div class="col-md-3">';
+      html += '<div class="form-group">';
+      html += '<label for="basicInput">Start Time</label>';
       html += '<input type="time" name="ticketstarttime[]" class="form-control m-input" autocomplete="off">';
+      html += '</div>';
+      html += '</div>';
+      html += '<div class="col-md-3">';
+      html += '<div class="form-group">';
+      html += '<label for="basicInput">End Time</label>';
       html += '<input type="time" name="ticketendtime[]" class="form-control m-input" autocomplete="off">';
+      html += '</div>';
+      html += '</div>';
+      html += '<div class="col-md-3">';
       html += '<div class="input-group-append">';
-      html += '<button id="removeRowTicket" type="button" class="btn btn-danger">Remove</button>';
+      html += '<button id="removeRowTicket" type="button" class="btn btn-danger mt-3">Remove</button>';
+      html += '</div>';
+      html += '</div>';
+      html += '</div>';
       html += '</div>';
       html += '</div>';
 

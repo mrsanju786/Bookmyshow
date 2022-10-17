@@ -11,20 +11,22 @@
     </ol>
   </nav>
 </div><!-- End Page Title -->
+<!-- General Form Elements -->
+<form class="form form-vertical" action="{{ route('category.store') }}" method="post">
+@csrf
 <section class="section">
-  <div class="row">
-    <div class="col-lg-6">
+  <div class="card">
+    <div class="card-body">
+      <div class="row">
+        <h5 class="card-title">Category Detail </h5><hr>
+        <br>
+        <div class="col-lg-12">
 
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title">Category Add Form </h5>
 
-          <!-- General Form Elements -->
-          <form class="form form-vertical" action="{{ route('category.store') }}" method="post">
-          @csrf
             <div class="row mb-3">
-              <label for="inputText" class="col-sm-2 col-form-label">Category Name</label>
-              <div class="col-sm-10">
+              <div class="col-sm-12">
+                <div class="form-group">
+                <label for="inputText" class="col-sm-2 col-form-label">Category Name</label>
                 <input type="text" id="name" 
                   class="form-control" name="name"
                   placeholder="Category Name">
@@ -35,23 +37,24 @@
                       </span>
                   @enderror
               </div>
+              </div>
             </div>
   
 
             <div class="row mb-3">
-              <div class="col-sm-10">
+              <div class="col-sm-12">
                 <button type="submit" class="btn btn-primary">Submit</button>
               </div>
             </div>
 
-          </form>
-          <!-- End General Form Elements -->
-          
+            
+          </div>
         </div>
-      </div>
 
+      </div>
     </div>
-  </div>
 </section>
+  </form>
+  <!-- End General Form Elements -->
 
 @endsection

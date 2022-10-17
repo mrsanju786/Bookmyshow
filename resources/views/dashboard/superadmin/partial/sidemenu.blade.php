@@ -40,11 +40,30 @@
                 <li class="sidebar-item  {{ request()->is('/event') ? 'active' : ''}} @if(Auth::user()->roles[0]->name != 'admin') d-none @endif " >
                     <a href="{{ url('/event') }}" class='sidebar-link'>
                         <i class="fa fa-calendar"></i>
-                        
                         <span>Event</span>
                     </a>
                 </li>
-                <li class="sidebar-item  {{ request()->is(['category','subcategory','city']) ? 'active' : ''}}  has-sub @if(Auth::user()->roles[0]->name != 'superadmin') d-none @endif">
+
+                <li class="sidebar-item  {{ request()->is('category') ? 'active' : ''}} @if(Auth::user()->roles[0]->name != 'superadmin') d-none @endif"">
+                    <a href="{{ url('category') }}"  class='sidebar-link'>
+                        <i class="bi bi-stack"></i>
+                        <span>Category</span>
+                    </a>
+                </li>
+                <li class="sidebar-item  {{ request()->is('subcategory') ? 'active' : ''}} @if(Auth::user()->roles[0]->name != 'superadmin') d-none @endif"">
+                    <a href="{{ url('subcategory') }}"  class='sidebar-link'>
+                        <i class="bi bi-stack"></i>
+                        <span>SubCategory</span>
+                    </a>
+                </li>
+                <li class="sidebar-item  {{ request()->is('city') ? 'active' : ''}} @if(Auth::user()->roles[0]->name != 'superadmin') d-none @endif"">
+                    <a href="{{ url('city') }}" class='sidebar-link'> 
+                        <i class="bi bi-stack"></i>
+                        <span>City</span>
+                    </a>
+                </li>
+
+                {{-- <li class="sidebar-item  {{ request()->is(['category','subcategory','city']) ? 'active' : ''}}  has-sub @if(Auth::user()->roles[0]->name != 'superadmin') d-none @endif">
                     <a href="#" class='sidebar-link'>
                         <i class="bi bi-stack"></i>
                         <span>Master</span>
@@ -60,7 +79,7 @@
                             <a href="{{ url('city') }}">City</a>
                         </li>
                     </ul>
-                </li>
+                </li> --}}
 
               
 

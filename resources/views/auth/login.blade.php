@@ -86,7 +86,7 @@
                     <a href="index.html"><img src="{{ asset('dashboard/assets/images/logo/logo.png') }}" alt="Logo"></a>
                 </div>
                 <h1 class="auth-title">Log in.</h1>
-                <p class="auth-subtitle mb-5">Log in with your data that you entered during registration.</p>
+                {{-- <p class="auth-subtitle mb-5">Log in with your data that you entered during registration.</p> --}}
 
                 <form method="POST" action="{{ route('login') }}">
                     @csrf
@@ -116,12 +116,12 @@
                             <i class="bi bi-shield-lock"></i>
                         </div>
                     </div>
-                    <div class="form-check form-check-lg d-flex align-items-end">
+                    {{-- <div class="form-check form-check-lg d-flex align-items-end">
                         <input class="form-check-input me-2" type="checkbox" value="" id="flexCheckDefault">
                         <label class="form-check-label text-gray-600" for="flexCheckDefault">
                             Keep me logged in
                         </label>
-                    </div>
+                    </div> --}}
                     {{-- <button class="btn btn-primary btn-block btn-lg shadow-lg mt-5">Log in</button> --}}
                     <button type="submit" class="btn btn-primary">
                         {{ __('Login') }}
@@ -137,17 +137,18 @@
                         {{-- <a class="font-bold" href="auth-forgot-password.html">Forgot password?</a>. --}}
 
                         @if (Route::has('password.request'))
-                        <a class="btn btn-link font-bold" href="{{ route('password.request') }}">
+                        {{-- <a class="btn btn-link font-bold" href="{{ route('password.request') }}">
                             {{ __('Forgot Your Password?') }}
-                        </a>
+                        </a> --}}
                     @endif
                     </p>
                 </div>
             </div>
         </div>
         <div class="col-lg-7 d-none d-lg-block">
-            <div id="auth-right">
-
+            <div>
+            {{-- <div id="auth-right"> --}}
+                <img src="{{ asset('dashboard/assets/images/bg/4853433.jpg')}}" alt="" width="100%" height="100%">
             </div>
         </div>
     </div>

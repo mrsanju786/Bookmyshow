@@ -20,7 +20,7 @@ class Event extends Model
         'street1',
         'street2',
         'languages',
-        'shor_description',
+        'short_description',
         'long_description',
         'ticket_name',
         'ticket_type',
